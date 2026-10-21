@@ -21,7 +21,13 @@ const loadOptions = (inputValue) => {
         `${GEO_API_URL}/cities?${params}`,
         geoApiOptions
     )
-        .then((response) => response.json())
+        .then((response) => {
+    if (!response.ok) {
+        throw new Error(`City search failed: ${response.status}`);
+    }
+
+    return response.json();
+})
         .then((response) => {
             const options = (response.data || []).map((city) => ({
                 value: `${city.latitude} ${city.longitude}`,

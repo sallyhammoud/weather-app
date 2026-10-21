@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+jest.mock('./components/search/search', () => () => ( <input placeholder="Search for city" />
+));
+
+test('renders the city search field', () => {
+render(<App />);
+expect(screen.getByPlaceholderText(/search for city/i)).toBeInTheDocument();
 });
