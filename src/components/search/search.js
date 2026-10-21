@@ -6,16 +6,24 @@ const Search = ({ onSearchChange }) => {
 
     const [search, setSearch] = useState(null);
 
-    const loadOptions = (inputValue) => {
+   
+const loadOptions = (inputValue) => {
+    if (!inputValue.trim()) {
+        return Promise.resolve({ options: [] });
+    }
+
+    const params = new URLSearchParams({
+        namePrefix: inputValue,
+        minPopulation: "100000",
+    });
+
     return fetch(
-        `${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
+        `${GEO_API_URL}/cities?${params}`,
         geoApiOptions
     )
         .then((response) => response.json())
         .then((response) => {
-            console.log(response);
-
-            const options = ( response.data || [] ).map((city) => ({
+            const options = (response.data || []).map((city) => ({
                 value: `${city.latitude} ${city.longitude}`,
                 label: `${city.name}, ${city.countryCode}`,
             }));
@@ -31,6 +39,8 @@ const Search = ({ onSearchChange }) => {
             };
         });
 };
+
+
 
     const handleOnChange = (searchData) => {
         setSearch(searchData);
