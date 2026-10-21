@@ -1,4 +1,4 @@
-import {
+import { 
   Accordion,
   AccordionItemHeading,
   AccordionItem,
@@ -17,21 +17,26 @@ const WEEK_DAYS = [
   "Sunday",
 ];
 
-const forecast = ({ data }) => {
+const forecast = ({ data }) => { 
   const dayInAWeek = new Date().getDay();
+  
   const forecastDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(
-    WEEK_DAYS.slice(0, dayInAWeek),
+    WEEK_DAYS.slice(0, dayInAWeek), 
   );
 
   return (
     <>
-      <label className="title">Daily Forecast</label>
-      <Accordion allowZeroExpanded>
+      <label className="title">Daily Forecast</label> 
+      <Accordion allowZeroExpanded> 
         {data.list.splice(0, 7).map((item, idx) => (
-          <AccordionItem key={idx}>
+      
+          
+          <AccordionItem key={idx}> 
+            
             <AccordionItemHeading>
-              <AccordionItemButton>
-                <div className="daily-item">
+              <AccordionItemButton> 
+                <div className="daily-item"> 
+                 
                   <img
                     alt="weather"
                     className="icon-small"
