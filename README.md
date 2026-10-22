@@ -68,8 +68,6 @@ You can use `.env.example` as a reference for the required variable names.
 After creating or changing `.env`, restart the development server if it is already running.
 
 ### 5. Start the development server
-
-bash
 npm start
 
 
@@ -99,27 +97,29 @@ The application accesses GeoDB Cities through RapidAPI.
 
 Website: https://rapidapi.com/
 
-## Project Structure
 
 ## Project Structure
 
+```text
 weather-app/
-  public/
-    icons/
-  src/
-    components/
-      current-weather/
-      forecast/
-      search/
-    api.js
-    App.js
-    App.css
-    App.test.js
-    index.js
-  .env.example
-  .gitignore
-  package.json
-  package-lock.json
+├── public/
+│   └── icons/
+├── src/
+│   ├── components/
+│   │   ├── current-weather/
+│   │   ├── forecast/
+│   │   └── search/
+│   ├── api.js
+│   ├── App.js
+│   ├── App.css
+│   ├── App.test.js
+│   └── index.js
+├── .env.example
+├── .gitignore
+├── package.json
+└── package-lock.json
+```
+
 
 
 

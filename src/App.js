@@ -65,12 +65,15 @@ try {
     ...forecastData,
   });
     } catch (err) {
-      if (err.name === 'AbortError') {
-        return;
-      }
+  if (
+    err.name === 'AbortError' ||
+    abortControllerRef.current !== controller
+  ) {
+    return;
+  }
 
-      setError(err.message || 'Something went wrong. Please try again.');
-    } finally {
+  setError(err.message || 'Something went wrong. Please try again.');
+} finally {
     if (abortControllerRef.current === controller) {
         setLoading(false);
     }
