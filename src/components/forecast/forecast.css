@@ -39,8 +39,6 @@
 }
 
 .daily-details-grid {
-  grid-row-gap: 0;
-  grid-column-gap: 15px;
   row-gap: 0;
   column-gap: 15px;
   display: grid;
